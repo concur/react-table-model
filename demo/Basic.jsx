@@ -17,7 +17,7 @@ export default function Basic() {
                 </Table.BodyRow>
                 <Table.BodyRow>
                     <Table.BodyCell>Matt</Table.BodyCell>
-                    <Table.BodyCell>$100</Table.BodyCell>
+                    <Table.BodyCell>$100.00</Table.BodyCell>
                 </Table.BodyRow>
                 <Table.BodyRow>
                     <Table.BodyCell>Jeff</Table.BodyCell>

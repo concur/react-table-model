@@ -1,7 +1,7 @@
 # react-table-model
 An abstraction over table to provide a better component model for data tables
 
-``` js
+``` jsx
 import React from 'react';
 import Table from 'react-table-model';
 
@@ -21,7 +21,7 @@ export default function Basic() {
                 </Table.BodyRow>
                 <Table.BodyRow>
                     <Table.BodyCell>Matt</Table.BodyCell>
-                    <Table.BodyCell>$100</Table.BodyCell>
+                    <Table.BodyCell>$100.00</Table.BodyCell>
                 </Table.BodyRow>
                 <Table.BodyRow>
                     <Table.BodyCell>Jeff</Table.BodyCell>
