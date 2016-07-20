@@ -39,7 +39,7 @@
     "test:watch": "nodemon -e js,jsx --exec 'npm run test --silent || true'",
     "clean": "rm -rf ./lib && rm -rf ./dist",
     "posttest": "echo 'Tests Complete'",
-    "prebuild": "npm run lint --silent && echo 'Build Starting'",
+    "prebuild": "npm run lint --silent && npm run test && echo 'Build Starting'",
     "build": "babel src -d lib && webpack",
     "postbuild": "echo 'Build Complete'",
     "rebuild": "npm run clean && npm run build",
