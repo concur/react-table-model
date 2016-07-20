@@ -25,4 +25,18 @@ TableModel.FootCell = FootCell;
 TableModel.alternateRows = alternateRows;
 
 export default TableModel;
-export { PropTypes, TableModel as Table, Head, HeadRow, HeadCell, Body, BodyRow, BodyCell, Foot, FootRow, FootCell, alternateRows };
+
+export {
+    PropTypes,
+    TableModel as Table,
+    Head,
+    HeadRow,
+    HeadCell,
+    Body,
+    BodyRow,
+    BodyCell,
+    Foot,
+    FootRow,
+    FootCell,
+    alternateRows
+};
