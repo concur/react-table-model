@@ -1,8 +1,6 @@
 import expect from 'expect';
 import TableModel, { PropTypes, Table, Head, HeadRow, HeadCell, Body, BodyRow, BodyCell, Foot, FootRow, FootCell, alternateRows } from '../src';
 
-console.log('TABLEMODEL', TableModel);
-
 describe('index', () => {
     describe('exports', () => {
         it('the TableModel as a component', () => {
