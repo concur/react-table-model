@@ -3,7 +3,7 @@
   "name": "react-table-model",
   "description": "An abstraction over table to provide a better component model for data tables",
   "version": "0.0.1",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": [
     "react",
     "data",
