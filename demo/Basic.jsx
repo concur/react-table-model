@@ -13,7 +13,7 @@ export default React.createClass({
                         <Table.HeadCell>Allowance</Table.HeadCell>
                     </Table.HeadRow>
                 </Table.Head>
-                <Table.Body rowBehaviors={[ alternateRows() ]}>
+                <Table.Body>
                     <Table.BodyRow>
                         <Table.BodyCell>Ed</Table.BodyCell>
                         <Table.BodyCell>$75.00</Table.BodyCell>
