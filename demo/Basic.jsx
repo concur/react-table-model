@@ -1,7 +1,7 @@
 import React from 'react';
-import Table, { alternateRows } from '../src';
+import Table from '../src';
 
-export default () => (
+const Basic = () => (
     <Table>
         <Table.Head>
             <Table.HeadRow>
@@ -31,3 +31,5 @@ export default () => (
         </Table.Foot>
     </Table>
 );
+
+export default Basic;
