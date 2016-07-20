@@ -1,22 +1,14 @@
 import React from 'react';
-import { forEach } from 'lodash';
 
 export default React.createClass({
     displayName: 'Body',
 
     propTypes: {
-        children: React.PropTypes.node,
-        rowBehaviors: React.PropTypes.arrayOf(React.PropTypes.func)
+        children: React.PropTypes.node
     },
 
     render() {
-        let { children, rowBehaviors, ...props } = this.props;
-
-        if (rowBehaviors) {
-            forEach(rowBehaviors, (applyBehavior) => {
-                children = applyBehavior(children);
-            });
-        }
+        let { children, ...props } = this.props;
 
         return (
             <tbody {...props}>

@@ -37,16 +37,4 @@ describe('Body', () => {
             });
         });
     });
-
-    it('applies each rowBehaviors function during rendering', () => {
-        let childrenPassedToBehavior;
-        const children = (<tr />);
-
-        function rowBehavior(passedChildren) {
-            childrenPassedToBehavior = passedChildren;
-        }
-
-        render(<Body rowBehaviors={[ rowBehavior ]}>{ children }</Body>);
-        expect(childrenPassedToBehavior).toBe(children);
-    });
 });
