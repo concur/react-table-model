@@ -1,5 +1,5 @@
 import React from 'react';
-import propagatePropsToChildren from './propagatePropsToChildren';
+import propagatePropsToChildren from './utils/propagatePropsToChildren';
 import PropTypes from './PropTypes';
 
 export default React.createClass({

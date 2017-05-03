@@ -1,5 +1,5 @@
 import React from 'react';
-import isUndefined from './utils/isUndefined';
+import isUndefined from './isUndefined';
 
 export default function propagatePropsToChildren(children, props, propTypes) {
     // If none of the props are defined, then we can short circuit
