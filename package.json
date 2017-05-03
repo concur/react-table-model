@@ -75,7 +75,6 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "lodash": "^4.2.0",
     "react": "15.1.0"
   },
   "peerDependencies": {
