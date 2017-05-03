@@ -1,9 +1,9 @@
 import React from 'react';
-import { isUndefined, keys, some } from 'lodash';
+import isUndefined from './isUndefined';
 
 export default function propagatePropsToChildren(children, props, propTypes) {
     // If none of the props are defined, then we can short circuit
-    let propsToApply = some(keys(propTypes), (propName) => !isUndefined(props[propName]));
+    let propsToApply = Object.keys(propTypes).some(propName => !isUndefined(props[propName]));
 
     if (propsToApply) {
         return React.Children.map(children, (child) => {
@@ -11,7 +11,7 @@ export default function propagatePropsToChildren(children, props, propTypes) {
             if (child && child.type && child.type.propTypes) {
                 let newProps = null;
 
-                keys(propTypes).forEach((propName) => {
+                Object.keys(propTypes).forEach((propName) => {
                     // If the parent has this property, the child defines the property with the same prop type,
                     // and the child's property is not defined, then apply the parent prop value to the child
                     // Note the importance of using isUndefined--this allows falsy values to be propagated down
