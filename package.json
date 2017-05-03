@@ -2,7 +2,7 @@
   "author": "Concur",
   "name": "react-table-model",
   "description": "An abstraction over table to provide a better component model for data tables",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "Apache-2.0",
   "keywords": [
     "react",

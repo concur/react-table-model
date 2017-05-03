@@ -6,6 +6,7 @@ import HeadCell from './HeadCell';
 import Body from './Body';
 import BodyRow from './BodyRow';
 import BodyCell from './BodyCell';
+import BodyHeadCell from './BodyHeadCell';
 import Foot from './Foot';
 import FootRow from './FootRow';
 import FootCell from './FootCell';
@@ -19,6 +20,7 @@ TableModel.HeadCell = HeadCell;
 TableModel.Body = Body;
 TableModel.BodyRow = BodyRow;
 TableModel.BodyCell = BodyCell;
+TableModel.BodyHeadCell = BodyHeadCell;
 TableModel.Foot = Foot;
 TableModel.FootRow = FootRow;
 TableModel.FootCell = FootCell;
@@ -35,6 +37,7 @@ export {
     Body,
     BodyRow,
     BodyCell,
+    BodyHeadCell,
     Foot,
     FootRow,
     FootCell,
