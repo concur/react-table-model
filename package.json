@@ -63,7 +63,6 @@
     "expect": "^1.20.2",
     "express-beautify": "^0.1.2",
     "express": "^4.13.4",
-    "history": "^3.0.0",
     "jsdom": "^9.4.1",
     "mocha": "^2.4.4",
     "nodemon": "^1.8.1",
@@ -76,8 +75,5 @@
   },
   "dependencies": {
     "classnames": "^2.2.5"
-  },
-  "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0"
   }
 }
