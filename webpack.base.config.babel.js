@@ -2,7 +2,7 @@ import webpack from 'webpack';
 
 const path = require('path');
 
-export default {
+module.exports = {
     entry: './src/index',
     output: {
         libraryTarget: 'umd',
