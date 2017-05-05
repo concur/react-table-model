@@ -1,21 +1,26 @@
 import webpack from 'webpack';
 
+const path = require('path');
+
 export default {
     entry: './src/index',
     output: {
         libraryTarget: 'umd',
         library: 'TableModel',
-        path: './dist/'
+        path: path.resolve(__dirname, 'dist')
     },
     resolve: {
-        extensions: ['', '.js', '.jsx' ]
+        extensions: ['.js', '.jsx']
     },
     module: {
         loaders: [
             {
                 test: /\.jsx?$/,
-                loader: 'babel',
-                exclude: /node_modules/
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                query: {
+                    presets: ['react', 'es2015', 'stage-0']
+                }
             }
         ]
     },
@@ -27,10 +32,17 @@ export default {
                 commonjs: 'react',
                 amd: 'react'
             }
+        },
+        {
+            'react-dom': {
+                root: 'ReactDOM',
+                commonjs2: 'react-dom',
+                commonjs: 'react-dom',
+                amd: 'react-dom'
+            }
         }
     ],
     plugins: [
-        new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
             __DEVTOOLS__: process.env.NODE_ENV === 'development',
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
