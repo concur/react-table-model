@@ -1,8 +1,7 @@
 {
-  "author": "Concur",
   "name": "react-table-model",
   "description": "An abstraction over table to provide a better component model for data tables",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "Apache-2.0",
   "keywords": [
     "react",
@@ -20,6 +19,22 @@
   "bugs": {
     "url": "https://github.com/concur/react-table-model/issues"
   },
+  "author": {
+    "name": "Concur Technologies",
+    "url": "https://github.com/concur"
+  },
+  "contributors": [
+    {
+      "name": "Jeff Handley",
+      "email": "Jeff.Handley@concur.com",
+      "url": "https://github.com/jeffhandley"
+    },
+    {
+        "name": "Brad Ullman",
+        "email": "Brad.Ullman@concur.com",
+        "url": "https://github.com/bcullman"
+    }
+  ],
   "directories": {
     "lib": "./lib"
   },
@@ -75,9 +90,5 @@
   },
   "dependencies": {
     "classnames": "^2.2.5"
-  },
-  "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0"
   }
 }
