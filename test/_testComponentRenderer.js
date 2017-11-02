@@ -1,6 +1,6 @@
 import { jsdom } from 'jsdom';
 import ReactDOM from 'react-dom';
-import ReactTestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 global.document = jsdom('<!doctype html><html><body></body></html>');
 global.window = document.defaultView;

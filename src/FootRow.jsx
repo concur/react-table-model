@@ -1,13 +1,5 @@
 import React from 'react';
 
-export default React.createClass({
-    displayName: 'FootRow',
+const FootRow = (props) => (<tr {...props} />);
 
-    propTypes: {
-        children: React.PropTypes.node.isRequired
-    },
-
-    render() {
-        return (<tr {...this.props} />);
-    }
-});
+export default FootRow;
