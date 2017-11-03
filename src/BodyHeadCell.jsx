@@ -1,9 +1,5 @@
 import React from 'react';
 
-export default React.createClass({
-    displayName: 'BodyHeadCell',
+const BodyHeadCell = (props) => (<th {...props} />);
 
-    render() {
-        return (<th {...this.props} />);
-    }
-});
+export default BodyHeadCell;

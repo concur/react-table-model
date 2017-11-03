@@ -1,19 +1,16 @@
 import React from 'react';
+import ReactPropTypes from 'prop-types';
 
-export default React.createClass({
-    displayName: 'Body',
-
-    propTypes: {
-        children: React.PropTypes.node
-    },
-
-    render() {
-        let { children, ...props } = this.props;
-
-        return (
+const Body = ({ children, ...props }) =>
+        (
             <tbody {...props}>
                 { children }
             </tbody>
         );
-    }
-});
+
+
+Body.propTypes = {
+    children: ReactPropTypes.node
+};
+
+export default Body;

@@ -1,22 +1,17 @@
 import React from 'react';
 import propagatePropsToChildren from './utils/propagatePropsToChildren';
 import PropTypes from './PropTypes';
+import ReactPropTypes from 'prop-types';
 
-export default React.createClass({
-    displayName: 'TableModel',
+const TableModel = ({ children, sorting, ...tableProps }) => (
+    <table {...tableProps}>
+        { propagatePropsToChildren(children, { sorting }, PropTypes) }
+    </table>
+);
 
-    propTypes: {
-        children: React.PropTypes.node,
-        sorting: PropTypes.sorting
-    },
+TableModel.propTypes = {
+    children: ReactPropTypes.node,
+    sorting: PropTypes.sorting
+};
 
-    render() {
-        const { children, sorting, ...tableProps } = this.props;
-
-        return (
-            <table {...tableProps}>
-                { propagatePropsToChildren(children, { sorting }, PropTypes) }
-            </table>
-        );
-    }
-});
+export default TableModel;

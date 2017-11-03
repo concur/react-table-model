@@ -1,9 +1,5 @@
 import React from 'react';
 
-export default React.createClass({
-    displayName: 'Foot',
+const Foot = (props) => (<tfoot {...props} />);
 
-    render() {
-        return (<tfoot {...this.props} />);
-    }
-});
+export default Foot;

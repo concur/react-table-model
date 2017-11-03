@@ -1,10 +1,10 @@
-import React from 'react';
+import ReactPropTypes from 'prop-types';
 
 export default {
-    sortProperty: React.PropTypes.string,
-    sorting: React.PropTypes.shape({
-        descending: React.PropTypes.bool,
-        property: React.PropTypes.string,
-        onSort: React.PropTypes.func
+    sortProperty: ReactPropTypes.string,
+    sorting: ReactPropTypes.shape({
+        descending: ReactPropTypes.bool,
+        property: ReactPropTypes.string,
+        onSort: ReactPropTypes.func
     })
 };

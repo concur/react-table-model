@@ -1,46 +1,48 @@
 import expect from 'expect';
-import testComponentRenderer from './_testComponentRenderer';
+import {mount, shallow} from 'enzyme';
 import React from 'react';
 import Head from '../src/Head';
 import PropTypes from '../src/PropTypes';
 
 describe('Head', () => {
-    // Swallow errors from React to avoid 'validateDOMNesting' errors in the console
-    const render = testComponentRenderer({ error: false });
 
     describe('renders', () => {
-        it('a thead', () => {
-            const { document } = render(
+        test('a thead', () => {
+            const wrapper = mount(
                 <Head />
             );
 
-            const theads = document.querySelectorAll('thead');
+            const theads = wrapper.find('thead');
             expect(theads.length).toBe(1);
         });
 
-        it('its children', () => {
-            const { document } = render(
-                <Head><tr id='child-tr' /></Head>
+        test('its children', () => {
+            const wrapper = mount(
+                <Head>
+                    <tr id='child-tr'/>
+                </Head>
             );
 
-            const child = document.querySelector('tr#child-tr');
+            const child = wrapper.find('tr#child-tr');
             expect(child).toExist();
         });
 
-        it('supplied props', () => {
-            const { component } = render(
-                <Head className='supplied-class' id='supplied-id' />
+        test('supplied props', () => {
+            const wrapper = shallow(
+                <Head className='supplied-class'
+                    id='supplied-id'/>
             );
 
-            expect(component.props).toInclude({
+            expect(wrapper.props()).toInclude({
                 className: 'supplied-class',
                 id: 'supplied-id'
             });
         });
     });
 
-    it('passes the sorting prop to its children', () => {
-        const onSort = () => { };
+    test('passes the sorting prop to its children', () => {
+        const onSort = () => {
+        };
 
         const sorting = {
             descending: true,
@@ -48,22 +50,21 @@ describe('Head', () => {
             onSort
         };
 
-        let renderedChildProps = { };
 
-        const Child = React.createClass({
-            propTypes: {
-                sorting: PropTypes.sorting
-            },
 
-            render() {
-                renderedChildProps = this.props;
-                return false;
-            }
-        });
+        const Child = () => {
+            return null;
+        };
+
+        Child.propTypes = {
+            sorting: PropTypes.sorting
+        };
 
         const children = (<Child />);
-        render(<Head { ...{ sorting, children } } />);
+        const wrapper = mount(<Head { ...{sorting, children} } />);
 
-        expect(renderedChildProps.sorting).toBe(sorting);
+        const renderedChild = wrapper.find(Child);
+
+        expect(renderedChild.prop('sorting')).toBe(sorting);
     });
 });

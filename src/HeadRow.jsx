@@ -1,22 +1,17 @@
 import React from 'react';
 import PropTypes from './PropTypes';
+import ReactPropTypes from 'prop-types';
 import propagatePropsToChildren from './utils/propagatePropsToChildren';
 
-export default React.createClass({
-    displayName: 'HeadRow',
+const HeadRow = ({ children, sorting, ...headRowProps }) => (
+    <tr {...headRowProps}>
+        { propagatePropsToChildren(children, { sorting }, PropTypes) }
+    </tr>
+);
 
-    propTypes: {
-        children: React.PropTypes.node.isRequired,
-        sorting: PropTypes.sorting
-    },
+HeadRow.propTypes = {
+    children: ReactPropTypes.node.isRequired,
+    sorting: PropTypes.sorting
+};
 
-    render() {
-        const { children, sorting, ...headRowProps } = this.props;
-
-        return (
-            <tr {...headRowProps}>
-                { propagatePropsToChildren(children, { sorting }, PropTypes) }
-            </tr>
-        );
-    }
-});
+export default HeadRow;

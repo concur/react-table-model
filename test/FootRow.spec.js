@@ -1,39 +1,43 @@
 import expect from 'expect';
-import testComponentRenderer from './_testComponentRenderer';
+import {mount, shallow} from 'enzyme';
 import React from 'react';
 import FootRow from '../src/FootRow';
 
 describe('FootRow', () => {
-    // Swallow errors from React to avoid 'validateDOMNesting' errors in the console
-    const render = testComponentRenderer({ error: false });
 
     describe('renders', () => {
-        it('a tr element', () => {
-            const { document } = render(
-                <FootRow><td /></FootRow>
-            );
-
-            const theads = document.querySelectorAll('tr');
-            expect(theads.length).toBe(1);
-        });
-
-        it('its children', () => {
-            const { document } = render(
-                <FootRow><td id='child-td' /></FootRow>
-            );
-
-            const child = document.querySelector('td#child-td');
-            expect(child).toExist();
-        });
-
-        it('supplied props', () => {
-            const { component } = render(
-                <FootRow abbr='supplied-abbr' className='supplied-class' id='supplied-id'>
+        test('a tr element', () => {
+            const wrapper = mount(
+                <FootRow>
                     <td />
                 </FootRow>
             );
 
-            expect(component.props).toInclude({
+            const theads = wrapper.find('tr');
+            expect(theads.length).toBe(1);
+        });
+
+        test('its children', () => {
+            const wrapper = mount(
+                <FootRow>
+                    <td id='child-td'/>
+                </FootRow>
+            );
+
+            const child = wrapper.find('td#child-td');
+            expect(child).toExist();
+        });
+
+        test('supplied props', () => {
+            const wrapper = shallow(
+                <FootRow abbr='supplied-abbr'
+                    className='supplied-class'
+                    id='supplied-id'>
+                    <td />
+                </FootRow>
+            );
+
+            expect(wrapper.props()).toInclude({
                 abbr: 'supplied-abbr',
                 className: 'supplied-class',
                 id: 'supplied-id'

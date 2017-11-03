@@ -1,9 +1,5 @@
 import React from 'react';
 
-export default React.createClass({
-    displayName: 'FootCell',
+const FootCell = (props) => (<td {...props} />);
 
-    render() {
-        return (<td {...this.props} />);
-    }
-});
+export default FootCell;
