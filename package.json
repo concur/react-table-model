@@ -49,7 +49,6 @@
     "lint": "eslint --ext .js,.jsx ${npm_config_glob:-${npm_package_config_lint_glob}}",
     "lint:watch": "nodemon -e js,jsx --exec 'npm run lint --silent || true'",
     "postlint": "echo 'Lint Complete'",
-    "pretest": "npm install -g npm-install-peers && npm-install-peers",
     "test": "jest",
     "test:watch": "nodemon -e js,jsx --exec 'npm run test --silent || true'",
     "clean": "rm -rf ./lib && rm -rf ./dist",
@@ -58,8 +57,7 @@
     "build": "babel src -d lib && webpack",
     "postbuild": "echo 'Build Complete'",
     "rebuild": "npm run clean && npm run build",
-    "demo": "NODE_ENV=development nodemon -e js,jsx --exec 'babel-node demo'",
-    "predemo": "npm install -g npm-install-peers && npm-install-peers"
+    "demo": "NODE_ENV=development nodemon -e js,jsx --exec 'babel-node demo'"
   },
   "config": {
     "lint_glob": ".",
@@ -84,6 +82,8 @@
     "jest": "^21.2.1",
     "jsdom": "^9.4.1",
     "nodemon": "^1.8.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-router": "^3.0.0",
     "react-test-renderer": "^16.0.0",
     "webpack": "^2.3.3",
