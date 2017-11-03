@@ -8,7 +8,7 @@ describe('FootCell', () => {
     const render = testComponentRenderer({ error: false });
 
     describe('renders', () => {
-        it('a td element', () => {
+        test('a td element', () => {
             const { document } = render(
                 <FootCell />
             );
@@ -17,7 +17,7 @@ describe('FootCell', () => {
             expect(theads.length).toBe(1);
         });
 
-        it('its children', () => {
+        test('its children', () => {
             const { document } = render(
                 <FootCell><span id='child-span' /></FootCell>
             );
@@ -26,7 +26,7 @@ describe('FootCell', () => {
             expect(child).toExist();
         });
 
-        it('supplied props', () => {
+        test('supplied props', () => {
             const { component } = render(
                 <FootCell className='supplied-class' id='supplied-id' />
             );

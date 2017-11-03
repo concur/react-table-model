@@ -8,7 +8,7 @@ describe('Body', () => {
     const render = testComponentRenderer({ error: false });
 
     describe('renders', () => {
-        it('a tbody', () => {
+        test('a tbody', () => {
             const { document } = render(
                 <Body />
             );
@@ -17,7 +17,7 @@ describe('Body', () => {
             expect(tBodys.length).toBe(1);
         });
 
-        it('its children', () => {
+        test('its children', () => {
             const { document } = render(
                 <Body><tr id='child-tr' /></Body>
             );
@@ -26,7 +26,7 @@ describe('Body', () => {
             expect(child).toExist();
         });
 
-        it('supplied props', () => {
+        test('supplied props', () => {
             const { component } = render(
                 <Body className='supplied-class' id='supplied-id' />
             );

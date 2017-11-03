@@ -9,7 +9,7 @@ describe('HeadCell', () => {
     const render = testComponentRenderer({ error: false });
 
     describe('renders', () => {
-        it('a th element', () => {
+        test('a th element', () => {
             const { document } = render(
                 <HeadCell />
             );
@@ -18,7 +18,7 @@ describe('HeadCell', () => {
             expect(theads.length).toBe(1);
         });
 
-        it('supplied props', () => {
+        test('supplied props', () => {
             const { component } = render(
                 <HeadCell className='supplied-class' id='supplied-id' />
             );
@@ -29,7 +29,7 @@ describe('HeadCell', () => {
             });
         });
 
-        it('its children', () => {
+        test('its children', () => {
             const { document } = render(
                 <HeadCell><span id='child-span' /></HeadCell>
             );
@@ -39,7 +39,7 @@ describe('HeadCell', () => {
         });
 
         describe('without a link', () => {
-            it('if neither sortProperty nor sorting is provided', () => {
+            test('if neither sortProperty nor sorting is provided', () => {
                 const { document } = render(
                     <HeadCell><span id='child-span' /></HeadCell>
                 );
@@ -48,7 +48,7 @@ describe('HeadCell', () => {
                 expect(child).toNotExist();
             });
 
-            it('if a sortProperty is provided, but no sorting is', () => {
+            test('if a sortProperty is provided, but no sorting is', () => {
                 const props = { sortProperty: 'sorted-property' };
 
                 const { document } = render(
@@ -61,7 +61,7 @@ describe('HeadCell', () => {
                 expect(child).toNotExist();
             });
 
-            it('if sorting is provided, but no sortProperty is', () => {
+            test('if sorting is provided, but no sortProperty is', () => {
                 const props = {
                     sorting: {
                         property: 'sorted-property',
@@ -79,7 +79,7 @@ describe('HeadCell', () => {
                 expect(child).toNotExist();
             });
 
-            it('if no onSort callback is provided', () => {
+            test('if no onSort callback is provided', () => {
                 const props = {
                     sorting: {
                         property: 'sorted-property'
@@ -98,7 +98,7 @@ describe('HeadCell', () => {
             });
         });
 
-        it('with a link if all sorting props are provided', () => {
+        test('with a link if all sorting props are provided', () => {
             const props = {
                 sorting: {
                     property: 'sorted-property',
@@ -119,51 +119,60 @@ describe('HeadCell', () => {
     });
 
     describe('sorting', () => {
-        it('causes the className asc to be applied for the currently sorted property', () => {
-            const props = {
-                sortProperty: 'sorted-property',
-                sorting: {
-                    property: 'sorted-property'
-                }
-            };
+        test(
+            'causes the className asc to be applied for the currently sorted property',
+            () => {
+                const props = {
+                    sortProperty: 'sorted-property',
+                    sorting: {
+                        property: 'sorted-property'
+                    }
+                };
 
-            const { element } = render(
-                <HeadCell {...props} />
-            );
+                const { element } = render(
+                    <HeadCell {...props} />
+                );
 
-            expect(element.className).toBe('asc');
-        });
+                expect(element.className).toBe('asc');
+            }
+        );
 
-        it('causes the className desc to be applied when currently sorted descending', () => {
-            const props = {
-                sortProperty: 'sorted-property',
-                sorting: {
-                    descending: true,
-                    property: 'sorted-property'
-                }
-            };
+        test(
+            'causes the className desc to be applied when currently sorted descending',
+            () => {
+                const props = {
+                    sortProperty: 'sorted-property',
+                    sorting: {
+                        descending: true,
+                        property: 'sorted-property'
+                    }
+                };
 
-            const { element } = render(
-                <HeadCell {...props} />
-            );
+                const { element } = render(
+                    <HeadCell {...props} />
+                );
 
-            expect(element.className).toBe('desc');
-        });
+                expect(element.className).toBe('desc');
+            }
+        );
 
-        it('does not apply a className when it is not the currently sorted property', () => {
-            const props = {
-                sortProperty: 'another-property',
-                sorting: {
-                    property: 'sorted-property'
-                }
-            };
+        test(
+            'does not apply a className when it is not the currently sorted property',
+            () => {
+                const props = {
+                    sortProperty: 'another-property',
+                    sorting: {
+                        property: 'sorted-property'
+                    }
+                };
 
-            const { element } = render(
-                <HeadCell {...props} />
-            );
+                const { element } = render(
+                    <HeadCell {...props} />
+                );
 
-            expect(element.className).toNotExist();
-        });
+                expect(element.className).toNotExist();
+            }
+        );
 
         describe('to call the onSort callback', () => {
             let callCount = 0;
@@ -189,11 +198,11 @@ describe('HeadCell', () => {
             const link = element.querySelector('a');
             ReactTestUtils.Simulate.click(link);
 
-            it('once', () => {
+            test('once', () => {
                 expect(callCount).toBe(1);
             });
 
-            it('passing the property to be sorted', () => {
+            test('passing the property to be sorted', () => {
                 expect(calledPropertyToSort).toBe('another-property');
             });
         });

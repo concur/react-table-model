@@ -8,7 +8,7 @@ describe('BodyHeadCell', () => {
     const render = testComponentRenderer({ error: false });
 
     describe('renders', () => {
-        it('a th element', () => {
+        test('a th element', () => {
             const { document } = render(
                 <BodyHeadCell />
             );
@@ -17,7 +17,7 @@ describe('BodyHeadCell', () => {
             expect(theads.length).toBe(1);
         });
 
-        it('its children', () => {
+        test('its children', () => {
             const { document } = render(
                 <BodyHeadCell><span id='child-span' /></BodyHeadCell>
             );
@@ -26,7 +26,7 @@ describe('BodyHeadCell', () => {
             expect(child).toExist();
         });
 
-        it('supplied props', () => {
+        test('supplied props', () => {
             const { component } = render(
                 <BodyHeadCell className='supplied-class' id='supplied-id' />
             );

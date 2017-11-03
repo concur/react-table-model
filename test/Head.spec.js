@@ -9,7 +9,7 @@ describe('Head', () => {
     const render = testComponentRenderer({ error: false });
 
     describe('renders', () => {
-        it('a thead', () => {
+        test('a thead', () => {
             const { document } = render(
                 <Head />
             );
@@ -18,7 +18,7 @@ describe('Head', () => {
             expect(theads.length).toBe(1);
         });
 
-        it('its children', () => {
+        test('its children', () => {
             const { document } = render(
                 <Head><tr id='child-tr' /></Head>
             );
@@ -27,7 +27,7 @@ describe('Head', () => {
             expect(child).toExist();
         });
 
-        it('supplied props', () => {
+        test('supplied props', () => {
             const { component } = render(
                 <Head className='supplied-class' id='supplied-id' />
             );
@@ -39,7 +39,7 @@ describe('Head', () => {
         });
     });
 
-    it('passes the sorting prop to its children', () => {
+    test('passes the sorting prop to its children', () => {
         const onSort = () => { };
 
         const sorting = {

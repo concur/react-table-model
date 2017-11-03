@@ -8,7 +8,7 @@ describe('Foot', () => {
     const render = testComponentRenderer({ error: false });
 
     describe('renders', () => {
-        it('a tfoot', () => {
+        test('a tfoot', () => {
             const { document } = render(
                 <Foot />
             );
@@ -17,7 +17,7 @@ describe('Foot', () => {
             expect(tFoots.length).toBe(1);
         });
 
-        it('its children', () => {
+        test('its children', () => {
             const { document } = render(
                 <Foot><tr id='child-tr' /></Foot>
             );
@@ -26,7 +26,7 @@ describe('Foot', () => {
             expect(child).toExist();
         });
 
-        it('supplied props', () => {
+        test('supplied props', () => {
             const { component } = render(
                 <Foot className='supplied-class' id='supplied-id' />
             );

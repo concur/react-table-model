@@ -8,13 +8,13 @@ describe('TableModel', () => {
     const render = testComponentRenderer(TableModel);
 
     describe('renders', () => {
-        it('a table', () => {
+        test('a table', () => {
             const { document } = render(<TableModel />);
             const tables = document.querySelectorAll('table');
             expect(tables.length).toBe(1);
         });
 
-        it('its children', () => {
+        test('its children', () => {
             const { document } = render(
                 <TableModel><tbody id='child-tbody' /></TableModel>
             );
@@ -23,7 +23,7 @@ describe('TableModel', () => {
             expect(child).toExist();
         });
 
-        it('supplied props', () => {
+        test('supplied props', () => {
             const { component } = render(
                 <TableModel border={1} className='supplied-class' id='supplied-id' />
             );
@@ -36,7 +36,7 @@ describe('TableModel', () => {
         });
     });
 
-    it('passes the sorting prop to its children', () => {
+    test('passes the sorting prop to its children', () => {
         const onSort = () => { };
 
         const sorting = {

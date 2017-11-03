@@ -8,7 +8,7 @@ describe('BodyCell', () => {
     const render = testComponentRenderer({ error: false });
 
     describe('renders', () => {
-        it('a td element', () => {
+        test('a td element', () => {
             const { document } = render(
                 <BodyCell />
             );
@@ -17,7 +17,7 @@ describe('BodyCell', () => {
             expect(theads.length).toBe(1);
         });
 
-        it('its children', () => {
+        test('its children', () => {
             const { document } = render(
                 <BodyCell><span id='child-span' /></BodyCell>
             );
@@ -26,7 +26,7 @@ describe('BodyCell', () => {
             expect(child).toExist();
         });
 
-        it('supplied props', () => {
+        test('supplied props', () => {
             const { component } = render(
                 <BodyCell className='supplied-class' id='supplied-id' />
             );

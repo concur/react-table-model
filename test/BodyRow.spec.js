@@ -8,7 +8,7 @@ describe('BodyRow', () => {
     const render = testComponentRenderer({ error: false });
 
     describe('renders', () => {
-        it('a tr element', () => {
+        test('a tr element', () => {
             const { document } = render(
                 <BodyRow><td /></BodyRow>
             );
@@ -17,7 +17,7 @@ describe('BodyRow', () => {
             expect(theads.length).toBe(1);
         });
 
-        it('its children', () => {
+        test('its children', () => {
             const { document } = render(
                 <BodyRow><td id='child-td' /></BodyRow>
             );
@@ -26,7 +26,7 @@ describe('BodyRow', () => {
             expect(child).toExist();
         });
 
-        it('supplied props', () => {
+        test('supplied props', () => {
             const { component } = render(
                 <BodyRow abbr='supplied-abbr' className='supplied-class' id='supplied-id'><td /></BodyRow>
             );
