@@ -4,7 +4,7 @@ import ReactPropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const HeadCell = (props) => {
-    let { sortProperty, sorting, children, className, ...headCellProps } = props;
+    let {sortProperty, sorting, children, className, ...headCellProps} = props;
 
     const _handleSort = () => {
         if (props.sorting.onSort) {
@@ -21,7 +21,8 @@ const HeadCell = (props) => {
     return (
         <th { ...headCellProps } className={ className }>
             { sortProperty && sorting && sorting.onSort ?
-                (<a href={ href } onClick={ _handleSort }>{ children }</a>) :
+                (<a href={ href }
+                    onClick={ _handleSort }>{ children }</a>) :
                 children
             }
         </th>
@@ -34,3 +35,5 @@ HeadCell.propTypes = {
     sortProperty: PropTypes.sortProperty,
     sorting: PropTypes.sorting
 };
+
+export default HeadCell;

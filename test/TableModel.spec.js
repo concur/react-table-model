@@ -1,34 +1,37 @@
 import expect from 'expect';
-import testComponentRenderer from './_testComponentRenderer';
+import {mount, shallow} from 'enzyme';
 import React from 'react';
 import TableModel from '../src/TableModel';
 import PropTypes from '../src/PropTypes';
 
 describe('TableModel', () => {
-    const render = testComponentRenderer(TableModel);
 
     describe('renders', () => {
         test('a table', () => {
-            const { document } = render(<TableModel />);
-            const tables = document.querySelectorAll('table');
+            const wrapper = mount(<TableModel />);
+            const tables = wrapper.find('table');
             expect(tables.length).toBe(1);
         });
 
         test('its children', () => {
-            const { document } = render(
-                <TableModel><tbody id='child-tbody' /></TableModel>
+            const wrapper = mount(
+                <TableModel>
+                    <tbody id='child-tbody'/>
+                </TableModel>
             );
 
-            const child = document.querySelector('tbody#child-tbody');
+            const child = wrapper.find('tbody#child-tbody');
             expect(child).toExist();
         });
 
         test('supplied props', () => {
-            const { component } = render(
-                <TableModel border={1} className='supplied-class' id='supplied-id' />
+            const wrapper = shallow(
+                <TableModel border={1}
+                    className='supplied-class'
+                    id='supplied-id'/>
             );
 
-            expect(component.props).toInclude({
+            expect(wrapper.props()).toInclude({
                 border: 1,
                 className: 'supplied-class',
                 id: 'supplied-id'
@@ -37,7 +40,8 @@ describe('TableModel', () => {
     });
 
     test('passes the sorting prop to its children', () => {
-        const onSort = () => { };
+        const onSort = () => {
+        };
 
         const sorting = {
             descending: true,
@@ -45,22 +49,20 @@ describe('TableModel', () => {
             onSort
         };
 
-        let renderedChildProps = { };
 
-        const Child = React.createClass({
-            propTypes: {
-                sorting: PropTypes.sorting
-            },
+        const Child = () => {
+            return null;
+        };
 
-            render() {
-                renderedChildProps = this.props;
-                return false;
-            }
-        });
+        Child.propTypes = {
+            sorting: PropTypes.sorting
+        };
 
         const children = (<Child />);
-        render(<TableModel { ...{ sorting, children } } />);
+        const wrapper = mount(<TableModel { ...{sorting, children} } />);
 
-        expect(renderedChildProps.sorting).toBe(sorting);
+        const renderedChild = wrapper.find(Child);
+
+        expect(renderedChild.prop('sorting')).toBe(sorting);
     });
 });

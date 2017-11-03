@@ -1,37 +1,36 @@
 import expect from 'expect';
-import testComponentRenderer from './_testComponentRenderer';
+import {mount, shallow} from 'enzyme';
 import React from 'react';
 import FootCell from '../src/FootCell';
 
 describe('FootCell', () => {
-    // Swallow errors from React to avoid 'validateDOMNesting' errors in the console
-    const render = testComponentRenderer({ error: false });
 
     describe('renders', () => {
         test('a td element', () => {
-            const { document } = render(
+            const wrapper = mount(
                 <FootCell />
             );
 
-            const theads = document.querySelectorAll('td');
+            const theads = wrapper.find('td');
             expect(theads.length).toBe(1);
         });
 
         test('its children', () => {
-            const { document } = render(
-                <FootCell><span id='child-span' /></FootCell>
+            const wrapper = mount(
+                <FootCell><span id='child-span'/></FootCell>
             );
 
-            const child = document.querySelector('span#child-span');
+            const child = wrapper.find('span#child-span');
             expect(child).toExist();
         });
 
         test('supplied props', () => {
-            const { component } = render(
-                <FootCell className='supplied-class' id='supplied-id' />
+            const wrapper = shallow(
+                <FootCell className='supplied-class'
+                    id='supplied-id'/>
             );
 
-            expect(component.props).toInclude({
+            expect(wrapper.props()).toInclude({
                 className: 'supplied-class',
                 id: 'supplied-id'
             });

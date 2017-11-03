@@ -31,7 +31,7 @@ describe('alternateRows', () => {
         });
 
         describe('handles a single child', () => {
-            const actual = behavior(<tr ref='single-child' />);
+            const actual = behavior(<tr ref='single-child'/>);
 
             test('and returns a single child', () => {
                 const count = React.Children.count(actual);
@@ -70,13 +70,13 @@ describe('alternateRows', () => {
         describe('handles multiple children', () => {
             const parent = (
                 <tbody>
-                    <tr ref='first' />
-                    <tr ref='second' />
-                    <tr ref='third' />
-                    <tr ref='fourth' />
-                    <tr ref='fifth' />
-                    <tr ref='sixth' />
-                    <tr ref='seventh' />
+                    <tr ref='first'/>
+                    <tr ref='second'/>
+                    <tr ref='third'/>
+                    <tr ref='fourth'/>
+                    <tr ref='fifth'/>
+                    <tr ref='sixth'/>
+                    <tr ref='seventh'/>
                 </tbody>
             );
 
@@ -100,7 +100,7 @@ describe('alternateRows', () => {
                     let notDefined;
 
                     const classNames = children.map((child) => child.props.className);
-                    expect(classNames).toEqual([ notDefined, 'alternaterow', notDefined, 'alternaterow', notDefined, 'alternaterow', notDefined ]);
+                    expect(classNames).toEqual([notDefined, 'alternaterow', notDefined, 'alternaterow', notDefined, 'alternaterow', notDefined]);
                 }
             );
 
@@ -113,7 +113,7 @@ describe('alternateRows', () => {
                     let notDefined;
 
                     const classNames = firstIsAlternate.map((child) => child.props.className);
-                    expect(classNames).toEqual([ 'alternaterow', notDefined, 'alternaterow', notDefined, 'alternaterow', notDefined, 'alternaterow' ]);
+                    expect(classNames).toEqual(['alternaterow', notDefined, 'alternaterow', notDefined, 'alternaterow', notDefined, 'alternaterow']);
                 }
             );
 
@@ -124,7 +124,7 @@ describe('alternateRows', () => {
                 let notDefined;
 
                 const classNames = firstIsAlternate.map((child) => child.props.className);
-                expect(classNames).toEqual([ 'custom-alternate-class', notDefined, 'custom-alternate-class', notDefined, 'custom-alternate-class', notDefined, 'custom-alternate-class' ]);
+                expect(classNames).toEqual(['custom-alternate-class', notDefined, 'custom-alternate-class', notDefined, 'custom-alternate-class', notDefined, 'custom-alternate-class']);
             });
         });
 
@@ -134,9 +134,9 @@ describe('alternateRows', () => {
             const firstRun = React.Children.toArray(reusedBehavior(<tr />))[0];
             const secondRun = React.Children.toArray(reusedBehavior(<tr />))[0];
 
-            const classNames = [ firstRun.props.className, secondRun.props.className ];
+            const classNames = [firstRun.props.className, secondRun.props.className];
 
-            expect(classNames).toEqual([ 'custom-alternate-class', 'custom-alternate-class' ]);
+            expect(classNames).toEqual(['custom-alternate-class', 'custom-alternate-class']);
         });
     });
 });

@@ -13,3 +13,5 @@ TableModel.propTypes = {
     children: ReactPropTypes.node,
     sorting: PropTypes.sorting
 };
+
+export default TableModel;

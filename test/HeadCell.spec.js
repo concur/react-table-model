@@ -1,82 +1,82 @@
 import expect from 'expect';
-import testComponentRenderer from './_testComponentRenderer';
+import {mount, shallow} from 'enzyme';
 import React from 'react';
-import ReactTestUtils from 'react-dom/test-utils';
 import HeadCell from '../src/HeadCell';
 
 describe('HeadCell', () => {
-    // Swallow errors from React to avoid 'validateDOMNesting' errors in the console
-    const render = testComponentRenderer({ error: false });
 
     describe('renders', () => {
         test('a th element', () => {
-            const { document } = render(
+            const wrapper = mount(
                 <HeadCell />
             );
 
-            const theads = document.querySelectorAll('th');
+            const theads = wrapper.find('th');
             expect(theads.length).toBe(1);
         });
 
         test('supplied props', () => {
-            const { component } = render(
-                <HeadCell className='supplied-class' id='supplied-id' />
+            const wrapper = shallow(
+                <HeadCell className='supplied-class'
+                          id='supplied-id'/>
             );
 
-            expect(component.props).toInclude({
+            expect(wrapper.props()).toInclude({
                 className: 'supplied-class',
                 id: 'supplied-id'
             });
         });
 
         test('its children', () => {
-            const { document } = render(
-                <HeadCell><span id='child-span' /></HeadCell>
+            const wrapper = mount(
+                <HeadCell><span id='child-span'/></HeadCell>
             );
 
-            const child = document.querySelector('span#child-span');
-            expect(child).toExist();
+            const child = wrapper.find('span#child-span');
+            console.log('child', child);
+            expect(child.length).toBe(1);
         });
 
         describe('without a link', () => {
             test('if neither sortProperty nor sorting is provided', () => {
-                const { document } = render(
-                    <HeadCell><span id='child-span' /></HeadCell>
+                const wrapper = mount(
+                    <HeadCell><span id='child-span'/></HeadCell>
                 );
 
-                const child = document.querySelector('a');
-                expect(child).toNotExist();
+                const child = wrapper.find('a');
+                expect(child.length).toBe(0);
             });
 
             test('if a sortProperty is provided, but no sorting is', () => {
-                const props = { sortProperty: 'sorted-property' };
+                const props = {sortProperty: 'sorted-property'};
 
-                const { document } = render(
+                const wrapper = mount(
                     <HeadCell {...props}>
-                        <span id='child-span' />
+                        <span id='child-span'/>
                     </HeadCell>
                 );
 
-                const child = document.querySelector('a');
-                expect(child).toNotExist();
+                const child = wrapper.find('a');
+                expect(child.length).toBe(0);
             });
 
             test('if sorting is provided, but no sortProperty is', () => {
                 const props = {
                     sorting: {
                         property: 'sorted-property',
-                        onSort() { }
+                        onSort() {
+                        }
                     }
                 };
 
-                const { document } = render(
+                const wrapper = mount(
                     <HeadCell {...props}>
-                        <span id='child-span' />
+                        <span id='child-span'/>
                     </HeadCell>
                 );
 
-                const child = document.querySelector('a');
-                expect(child).toNotExist();
+                const child = wrapper.find('a');
+                expect(child.length).toBe(0);
             });
 
             test('if no onSort callback is provided', () => {
@@ -87,14 +87,14 @@ describe('HeadCell', () => {
                     sortProperty: 'sorted-property'
                 };
 
-                const { document } = render(
+                const wrapper = mount(
                     <HeadCell {...props}>
-                        <span id='child-span' />
+                        <span id='child-span'/>
                     </HeadCell>
                 );
 
-                const child = document.querySelector('a');
-                expect(child).toNotExist();
+                const child = wrapper.find('a');
+                expect(child.length).toBe(0);
             });
         });
 
@@ -102,19 +102,20 @@ describe('HeadCell', () => {
             const props = {
                 sorting: {
                     property: 'sorted-property',
-                    onSort() { }
+                    onSort() {
+                    }
                 },
                 sortProperty: 'sorted-property'
             };
 
-            const { document } = render(
+            const wrapper = mount(
                 <HeadCell {...props}>
-                    <span id='child-span' />
+                    <span id='child-span'/>
                 </HeadCell>
             );
 
-            const child = document.querySelector('a #child-span');
-            expect(child).toExist();
+            const child = wrapper.find('a #child-span');
+            expect(child.length).toBe(1);
         });
     });
 
@@ -129,11 +130,11 @@ describe('HeadCell', () => {
                     }
                 };
 
-                const { element } = render(
+                const wrapper = shallow(
                     <HeadCell {...props} />
                 );
 
-                expect(element.className).toBe('asc');
+                expect(wrapper.prop('className')).toBe('asc');
             }
         );
 
@@ -148,11 +149,11 @@ describe('HeadCell', () => {
                     }
                 };
 
-                const { element } = render(
+                const wrapper = shallow(
                     <HeadCell {...props} />
                 );
 
-                expect(element.className).toBe('desc');
+                expect(wrapper.prop('className')).toBe('desc');
             }
         );
 
@@ -166,11 +167,11 @@ describe('HeadCell', () => {
                     }
                 };
 
-                const { element } = render(
+                const wrapper = shallow(
                     <HeadCell {...props} />
                 );
 
-                expect(element.className).toNotExist();
+                expect(wrapper.prop('className')).toNotExist();
             }
         );
 
@@ -191,13 +192,13 @@ describe('HeadCell', () => {
                 }
             };
 
-            const { element } = render(
+            const wrapper = mount(
                 <HeadCell {...props} />
             );
 
-            const link = element.querySelector('a');
-            ReactTestUtils.Simulate.click(link);
+            const link = wrapper.find('a');
 
+            link.simulate('click');
             test('once', () => {
                 expect(callCount).toBe(1);
             });

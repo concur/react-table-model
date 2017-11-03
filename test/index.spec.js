@@ -1,5 +1,18 @@
 import expect from 'expect';
-import TableModel, { PropTypes, Table, Head, HeadRow, HeadCell, Body, BodyRow, BodyCell, Foot, FootRow, FootCell, alternateRows } from '../src';
+import TableModel, {
+    alternateRows,
+    Body,
+    BodyCell,
+    BodyRow,
+    Foot,
+    FootCell,
+    FootRow,
+    Head,
+    HeadCell,
+    HeadRow,
+    PropTypes,
+    Table
+} from '../src';
 
 describe('index', () => {
     describe('exports', () => {
