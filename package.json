@@ -73,6 +73,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.3.13",
+    "create-react-class": "^15.6.3",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.3",
     "eslint": "^3.15.0",
@@ -95,8 +96,8 @@
     "prop-types": "^15.6.0"
   },
   "peerDependencies": {
-    "react": "^15.3.0 || ^16.0.0",
-    "react-dom": "^15.3.0 || ^16.0.0"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "jest": {
     "setupFiles": [
