@@ -57,7 +57,8 @@
     "build": "babel src -d lib && webpack",
     "postbuild": "echo 'Build Complete'",
     "rebuild": "npm run clean && npm run build",
-    "demo": "NODE_ENV=development nodemon -e js,jsx --exec 'babel-node demo'"
+    "demo": "NODE_ENV=development nodemon -e js,jsx --exec 'babel-node demo'",
+    "release": "npm run clean && npm run build && standard-version"
   },
   "config": {
     "lint_glob": ".",
@@ -86,6 +87,7 @@
     "react-dom": "^16.0.0",
     "react-router": "^3.0.0",
     "react-test-renderer": "^16.0.0",
+    "standard-version": "^4.3.0",
     "webpack": "^2.3.3",
     "webpack-merge": "^4.1.0"
   },
