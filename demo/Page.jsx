@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 
-export default React.createClass({
+export default createReactClass({
     displayName: 'Demo Page',
 
     propTypes: {
-        children: React.PropTypes.node.isRequired
+        children: PropTypes.node.isRequired
     },
 
     render() {
