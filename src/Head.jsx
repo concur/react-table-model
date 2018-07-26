@@ -11,7 +11,7 @@ const Head = ({ children, sorting, ...headProps }) => { // eslint-disable-line
     );
 };
 
-Head.PropTypes = {
+Head.propTypes = {
     children: ReactPropTypes.node,
     sorting: PropTypes.sorting
 };
